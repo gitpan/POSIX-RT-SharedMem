@@ -1,6 +1,6 @@
 ---
 name: POSIX-RT-SharedMem
-version: 0.01
+version: 0.02
 author:
   - 'Leon Timmermans <leont@cpan.org>'
 abstract: Create/open or unlink POSIX shared memory objects in Perl
@@ -13,6 +13,7 @@ configure_requires:
   Module::Build: 0
 requires:
   Exporter: 5.57
+  File::Map: 0.19
   Readonly: 1.03
   perl: 5.008
 build_requires:
@@ -23,7 +24,7 @@ build_requires:
 provides:
   POSIX::RT::SharedMem:
     file: lib/POSIX/RT/SharedMem.pm
-    version: 0.01
+    version: 0.02
 generated_by: Module::Build version 0.33
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
