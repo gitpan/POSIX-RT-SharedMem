@@ -7,18 +7,18 @@ use Exporter 5.57 'import';
 use XSLoader;
 use Carp qw/croak/;
 use Fcntl qw/O_RDONLY O_WRONLY O_RDWR O_CREAT/;
-use Readonly 1.03;
+use Const::Fast;
 
 use File::Map 'map_handle';
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 our @EXPORT_OK = qw/shared_open shared_unlink/;
 
 XSLoader::load('POSIX::RT::SharedMem', $VERSION);
 
-Readonly my $fail_fd      => -1;
-Readonly my $default_mode => oct 700;
+const my $fail_fd       => -1;
+const my $default_perms => oct 700;
 
 my %flag_for = (
 	'<'  => O_RDONLY,
@@ -31,7 +31,7 @@ sub shared_open {    ## no critic (Subroutines::RequireArgUnpacking)
 	my (undef, $name, $mode, %other) = @_;
 
 	my %options = (
-		perms  => $default_mode,
+		perms  => $default_perms,
 		offset => 0,
 		%other,
 	);
@@ -41,7 +41,7 @@ sub shared_open {    ## no critic (Subroutines::RequireArgUnpacking)
 
 	my $fd = _shm_open($name, $flag_for{$mode}, $options{perms});
 	croak "Can't open shared memory object $name: $!" if $fd == $fail_fd;
-	open my $fh, '<&', $fd or croak "Can't fdopen($fd): $!";
+	open my $fh, "$mode&", $fd or croak "Can't fdopen($fd): $!";
 
 	$options{size} = -s $fh if not defined $options{size};
 	croak 'can\'t map empty file' if $options{size} == 0;
@@ -63,13 +63,13 @@ POSIX::RT::SharedMem - Create/open or unlink POSIX shared memory objects in Perl
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 
-	use POSIX::RT::SharedMem qw/shared_open/;
+ use POSIX::RT::SharedMem qw/shared_open/;
 
-	shared_open my $map, '/some_file', '>+', size => 1024, perms => oct(777);
+ shared_open my $map, '/some_file', '>+', size => 1024, perms => oct(777);
 
 =head1 FUNCTIONS
 
