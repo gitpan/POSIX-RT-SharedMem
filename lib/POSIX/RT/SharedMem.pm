@@ -11,14 +11,14 @@ use Const::Fast;
 
 use File::Map 'map_handle';
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 our @EXPORT_OK = qw/shared_open shared_unlink/;
 
 XSLoader::load('POSIX::RT::SharedMem', $VERSION);
 
 const my $fail_fd       => -1;
-const my $default_perms => oct 700;
+const my $default_perms => oct '700';
 
 my %flag_for = (
 	'<'  => O_RDONLY,
@@ -38,18 +38,23 @@ sub shared_open {    ## no critic (Subroutines::RequireArgUnpacking)
 	croak 'Not enough arguments for shared_open' if @_ < 2;
 	$mode = '<' if not defined $mode;
 	croak 'No such mode' if not defined $flag_for{$mode};
+	croak 'Size must be given in creating mode' if $mode eq '+>' and $options{size} == 0;
 
 	my $fd = _shm_open($name, $flag_for{$mode}, $options{perms});
 	croak "Can't open shared memory object $name: $!" if $fd == $fail_fd;
 	open my $fh, "$mode&", $fd or croak "Can't fdopen($fd): $!";
+	$options{after_open}->($fh, \%options) if defined $options{after_open};
 
 	$options{size} = -s $fh if not defined $options{size};
-	croak 'can\'t map empty file' if $options{size} == 0;
+	croak 'can\'t map empty file' if $options{size} == 0;    # Should never happen
 	truncate $fh, $options{size} if $options{size} > -s $fh;
 
+	$options{before_mapping}->($fh, \%options) if defined $options{before_mapping};
 	map_handle $_[0], $fh, $mode, $options{offset}, $options{size};
-	close $fh or croak "Could not close shared filehandle: $!";
 
+	return $fh if defined wantarray;
+
+	close $fh or croak "Could not close shared filehandle: $!";
 	return;
 }
 
@@ -63,7 +68,7 @@ POSIX::RT::SharedMem - Create/open or unlink POSIX shared memory objects in Perl
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.61.
+signed via the Module::Signature module, version 0.63.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -17,20 +17,20 @@ Hash: SHA1
 SHA1 447794c75699e3b76e00b9ac77db9695d1eda4f0 Build.PL
 SHA1 05eb10a0d5e3ae13949f4488ac72cd80a0e8b489 Changes
 SHA1 9e627682091372eabbb50d3af3404656d87eb080 LICENSE
-SHA1 e3a90b3cce86b48724215e34e6572715457d98f2 MANIFEST
-SHA1 da374c0ac7b665af841bce654a3916857eda9147 META.yml
-SHA1 b2616b5bb178cdeefae4e3abb0ce65af36857571 Makefile.PL
+SHA1 0460be28b3f0fb87f12c993ebed1067879e0bda0 MANIFEST
+SHA1 242e9ab9b43075d4667d0621b4db0ff162975167 META.yml
+SHA1 4cfedd61a7cd052580d4e2fb2115362978303a4b Makefile.PL
 SHA1 e826e44e03b3e9300700953904046b487ecceee4 README
-SHA1 5e5d5eb6c6197dc9b74fe01181b51c377fa4f443 lib/POSIX/RT/SharedMem.pm
+SHA1 cd12f9641dceca77fc755246ef0493c73a931f0c lib/POSIX/RT/SharedMem.pm
 SHA1 481cc604256cc487ecf32c8d6396707a47452cc0 lib/POSIX/RT/SharedMem.xs
 SHA1 3d2b6a45cc9e3fea2f58b465f2b4ea50725cbc69 t/00-load.t
-SHA1 43c577266f8b6913c50b1b9dee6fd16d821ef9cb t/10-basics.t
+SHA1 1aac273ca33887548275fcbc664d0b42decdadf2 t/10-basics.t
 SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
 SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkyA5k4ACgkQTd+EWiaICwqblgCfYDEummEq5aG8+xBnGpfGYtB3
-3ZAAnAmEEDYk02t8hveQKchQsM2jRux+
-=x29n
+iEYEARECAAYFAk0E+SMACgkQTd+EWiaICwpadgCeIjKbbRLN2dOrbOykuOy+1AzV
+ABkAn24jTxoqhldpee2pTtgZDP1L6JAJ
+=FRNi
 -----END PGP SIGNATURE-----

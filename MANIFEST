@@ -3,12 +3,12 @@ Changes
 lib/POSIX/RT/SharedMem.pm
 lib/POSIX/RT/SharedMem.xs
 LICENSE
+Makefile.PL
 MANIFEST
+META.yml
 README
 t/00-load.t
 t/10-basics.t
 t/pod-coverage.t
 t/pod.t
-Makefile.PL
-META.yml
 SIGNATURE    Added here by Module::Build

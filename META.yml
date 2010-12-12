@@ -1,34 +1,34 @@
 ---
-name: POSIX-RT-SharedMem
-version: 0.04
+abstract: 'Create/open or unlink POSIX shared memory objects in Perl'
 author:
   - 'Leon Timmermans <leont@cpan.org>'
-abstract: Create/open or unlink POSIX shared memory objects in Perl
-license: perl
-resources:
-  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=POSIX::RT::SharedMem
-  license: http://dev.perl.org/licenses/
-  repository: http://github.com/Leont/posix-rt-sharedmem/tree
 build_requires:
   ExtUtils::CBuilder: 0
   Module::Build: 0
   Test::Exception: 0
   Test::More: 0
+configure_requires:
+  Module::Build: 0
+generated_by: 'Module::Build version 0.3607'
+keywords:
+  - 'memory mapping'
+  - 'shared memory'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: POSIX-RT-SharedMem
+provides:
+  POSIX::RT::SharedMem:
+    file: lib/POSIX/RT/SharedMem.pm
+    version: 0.05
 requires:
   Const::Fast: 0
   Exporter: 5.57
   File::Map: 0.19
   perl: 5.008
-configure_requires:
-  Module::Build: 0
-provides:
-  POSIX::RT::SharedMem:
-    file: lib/POSIX/RT/SharedMem.pm
-    version: 0.04
-generated_by: Module::Build version 0.340201
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-keywords:
-  - memory mapping
-  - shared memory
+resources:
+  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=POSIX::RT::SharedMem
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/Leont/posix-rt-sharedmem/tree
+version: 0.05
