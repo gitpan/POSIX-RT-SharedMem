@@ -1,14 +1,17 @@
 Build.PL
 Changes
-lib/POSIX/RT/SharedMem.pm
-lib/POSIX/RT/SharedMem.xs
+INSTALL
 LICENSE
-Makefile.PL
 MANIFEST
+META.json
 META.yml
 README
-t/00-load.t
+SIGNATURE
+dist.ini
+lib/POSIX/RT/SharedMem.pm
+lib/POSIX/RT/SharedMem.xs
+t/00-compile.t
 t/10-basics.t
-t/pod-coverage.t
-t/pod.t
-SIGNATURE    Added here by Module::Build
+t/release-kwalitee.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t

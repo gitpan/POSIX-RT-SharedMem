@@ -1,5 +1,9 @@
 Revision history for POSIX-RT-SharedMem
 
+0.06      2011-09-10 11:44:19 Europe/Amsterdam
+          Fixed creation mode and permission
+          Converted to Dist::Zilla
+
 0.04    2010-09-03
         Handle modes correctly
         Converted from Readonly to Const::Fast

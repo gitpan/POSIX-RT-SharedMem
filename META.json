@@ -1,0 +1,63 @@
+{
+   "abstract" : "Create/open or unlink POSIX shared memory objects in Perl",
+   "author" : [
+      "Leon Timmermans <leont@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110440",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "POSIX-RT-SharedMem",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build" : "0.028"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.028"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Carp" : 0,
+            "Const::Fast" : 0,
+            "Exporter" : "5.57",
+            "Fcntl" : 0,
+            "File::Map" : 0,
+            "XSLoader" : 0,
+            "perl" : "5.008",
+            "strict" : 0,
+            "warnings" : 0
+         }
+      },
+      "test" : {
+         "requires" : {
+            "File::Find" : 0,
+            "File::Temp" : 0,
+            "Test::Exception" : 0,
+            "Test::More" : 0
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "mailto" : "bug-posix-rt-sharedmem at rt.cpan.org",
+         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=POSIX-RT-SharedMem"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/Leont/posix-rt-sharedmem.git",
+         "web" : "http://github.com/Leont/posix-rt-sharedmem"
+      }
+   },
+   "version" : "0.06"
+}
+

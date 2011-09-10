@@ -1,4 +1,7 @@
 package POSIX::RT::SharedMem;
+BEGIN {
+  $POSIX::RT::SharedMem::VERSION = '0.06';
+}
 
 use strict;
 use warnings;
@@ -11,19 +14,17 @@ use Const::Fast;
 
 use File::Map 'map_handle';
 
-our $VERSION = '0.05';
-
 our @EXPORT_OK = qw/shared_open shared_unlink/;
 
-XSLoader::load('POSIX::RT::SharedMem', $VERSION);
+XSLoader::load(__PACKAGE__, __PACKAGE__->VERSION);
 
 const my $fail_fd       => -1;
-const my $default_perms => oct '700';
+const my $default_perms => oct '600';
 
 my %flag_for = (
 	'<'  => O_RDONLY,
 	'+<' => O_RDWR,
-	'>'  => O_WRONLY,
+	'>'  => O_WRONLY | O_CREAT,
 	'+>' => O_RDWR | O_CREAT,
 );
 
@@ -38,11 +39,9 @@ sub shared_open {    ## no critic (Subroutines::RequireArgUnpacking)
 	croak 'Not enough arguments for shared_open' if @_ < 2;
 	$mode = '<' if not defined $mode;
 	croak 'No such mode' if not defined $flag_for{$mode};
-	croak 'Size must be given in creating mode' if $mode eq '+>' and $options{size} == 0;
+	croak 'Size must be given in creating mode' if $flag_for{$mode} & O_CREAT and $options{size} == 0;
 
-	my $fd = _shm_open($name, $flag_for{$mode}, $options{perms});
-	croak "Can't open shared memory object $name: $!" if $fd == $fail_fd;
-	open my $fh, "$mode&", $fd or croak "Can't fdopen($fd): $!";
+	my $fh = _shm_open($name, $flag_for{$mode}, $options{perms});
 	$options{after_open}->($fh, \%options) if defined $options{after_open};
 
 	$options{size} = -s $fh if not defined $options{size};
@@ -60,7 +59,9 @@ sub shared_open {    ## no critic (Subroutines::RequireArgUnpacking)
 
 1;    # End of POSIX::RT::SharedMem
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
@@ -68,7 +69,7 @@ POSIX::RT::SharedMem - Create/open or unlink POSIX shared memory objects in Perl
 
 =head1 VERSION
 
-Version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -84,17 +85,17 @@ Map the shared memory object C<$name> into C<$map>. For portable use, a shared m
 
 C<$mode> determines the read/write mode. It works the same as in open and map_file.
 
-Beyond that it can take two named arguments:
+Beyond that it can take three named arguments:
 
 =over 4
 
 =item * size
 
-This determines the size of the map. If the map is map has writing permissions and the file is smaller than the given size it will be lengthened. Defaults to the length of the file and fails if it is zero.
+This determines the size of the map. If the map is map has writing permissions and the file is smaller than the given size it will be lengthened. Defaults to the length of the file and fails if it is zero. It is mandatory when using mode C<< > >> or C<< +> >>.
 
 =item * perms
 
-This determines the permissions with which the file is created (if $mode is '+>'). Default is 0700.
+This determines the permissions with which the file is created (if $mode is '+>'). Default is 0600.
 
 =item * offset
 
@@ -102,47 +103,11 @@ This determines the offset in the file that is mapped. Default is 0.
 
 =back
 
+It returns a filehandle that can be used to with L<stat>, L<chmod>, L<chown>. You should not assume you can read or write directly from it.
+
 =head2 shared_unlink $name
 
 Remove the shared memory object $name from the namespace. Note that while the shared memory object can't be opened anymore after this, it doesn't remove the contents until all processes have closed it.
-
-=head1 AUTHOR
-
-Leon Timmermans, C<< <leont at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-posix-rt-sharedmem at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=POSIX-RT-SharedMem>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc POSIX::RT::SharedMem
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=POSIX-RT-SharedMem>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/POSIX-RT-SharedMem>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/POSIX-RT-SharedMem>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/POSIX-RT-SharedMem>
-
-=back
 
 =head1 SEE ALSO
 
@@ -152,11 +117,21 @@ L<http://search.cpan.org/dist/POSIX-RT-SharedMem>
 
 =back
 
-=head1 COPYRIGHT & LICENSE
+=head1 AUTHOR
 
-Copyright 2010 Leon Timmermans, all rights reserved.
+Leon Timmermans <leont@cpan.org>
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Leon Timmermans.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
+#ABSTRACT: Create/open or unlink POSIX shared memory objects in Perl
+

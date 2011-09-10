@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.63.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,23 +14,26 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 447794c75699e3b76e00b9ac77db9695d1eda4f0 Build.PL
-SHA1 05eb10a0d5e3ae13949f4488ac72cd80a0e8b489 Changes
-SHA1 9e627682091372eabbb50d3af3404656d87eb080 LICENSE
-SHA1 0460be28b3f0fb87f12c993ebed1067879e0bda0 MANIFEST
-SHA1 242e9ab9b43075d4667d0621b4db0ff162975167 META.yml
-SHA1 4cfedd61a7cd052580d4e2fb2115362978303a4b Makefile.PL
-SHA1 e826e44e03b3e9300700953904046b487ecceee4 README
-SHA1 cd12f9641dceca77fc755246ef0493c73a931f0c lib/POSIX/RT/SharedMem.pm
-SHA1 481cc604256cc487ecf32c8d6396707a47452cc0 lib/POSIX/RT/SharedMem.xs
-SHA1 3d2b6a45cc9e3fea2f58b465f2b4ea50725cbc69 t/00-load.t
+SHA1 1386fd23fad1b43a70123c60e5c06876497cbdfa Build.PL
+SHA1 8d573de4b2d2585baa933bfad9a5e55c06264da5 Changes
+SHA1 7274518a4d84b0adb3b9bb1f2a23ff6f532dac32 INSTALL
+SHA1 255e4d333d5d1b2d2d1371fdd129c14e25eff531 LICENSE
+SHA1 d7881bd6aa1e66834fe890f33d13c824b046f198 MANIFEST
+SHA1 ca24c336225029d03e1846e052fa6260b773340e META.json
+SHA1 b93b0e03c0f9040e04356e01274491ea5126ba67 META.yml
+SHA1 cc369b9eb9bcc66a0c4b8262e55d718b52faf470 README
+SHA1 115ee4388a61060b6729c6ee7ad980cf5cca04cf dist.ini
+SHA1 cffbe0752a7774a58be7e74ae5b1626dcfde1b45 lib/POSIX/RT/SharedMem.pm
+SHA1 842ad2c4fd0b059e660b5f06523b11d382e6529a lib/POSIX/RT/SharedMem.xs
+SHA1 14863e63ebceb712fe78ec64e52543a2e7909716 t/00-compile.t
 SHA1 1aac273ca33887548275fcbc664d0b42decdadf2 t/10-basics.t
-SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
-SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+SHA1 6ea81e3865946a14536f97ccc65fee4b218c8148 t/release-kwalitee.t
+SHA1 9433c240fe590bc404ab68ff63984df763e347ed t/release-pod-coverage.t
+SHA1 b30cbdfaf935017c4568c0c91b242438cb87786e t/release-pod-syntax.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.10 (GNU/Linux)
+Version: GnuPG v1.4.11 (GNU/Linux)
 
-iEYEARECAAYFAk0E+SMACgkQTd+EWiaICwpadgCeIjKbbRLN2dOrbOykuOy+1AzV
-ABkAn24jTxoqhldpee2pTtgZDP1L6JAJ
-=FRNi
+iEYEARECAAYFAk5rMXYACgkQTd+EWiaICwrh6gCdE9MUHAyXrj7FSysVAZiDOd4+
+snMAn0sj6pTq5fM/MYZ0Dtv+41l8AGXB
+=Olt1
 -----END PGP SIGNATURE-----
