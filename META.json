@@ -3,8 +3,8 @@
    "author" : [
       "Leon Timmermans <leont@cpan.org>"
    ],
-   "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200008, CPAN::Meta::Converter version 2.110440",
+   "dynamic_config" : "1",
+   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -16,12 +16,13 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Module::Build" : "0.028"
+            "Module::Build" : "0.3601"
          }
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.028"
+            "Devel::CheckLib" : 0,
+            "Module::Build" : "0.3601"
          }
       },
       "runtime" : {
@@ -32,7 +33,7 @@
             "Fcntl" : 0,
             "File::Map" : 0,
             "XSLoader" : 0,
-            "perl" : "5.008",
+            "perl" : "5.006",
             "strict" : 0,
             "warnings" : 0
          }
@@ -58,6 +59,6 @@
          "web" : "http://github.com/Leont/posix-rt-sharedmem"
       }
    },
-   "version" : "0.06"
+   "version" : "0.07"
 }
 

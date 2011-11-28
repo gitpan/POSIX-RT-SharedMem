@@ -1,6 +1,6 @@
 package POSIX::RT::SharedMem;
-BEGIN {
-  $POSIX::RT::SharedMem::VERSION = '0.06';
+{
+  $POSIX::RT::SharedMem::VERSION = '0.07';
 }
 
 use strict;
@@ -65,11 +65,11 @@ sub shared_open {    ## no critic (Subroutines::RequireArgUnpacking)
 
 =head1 NAME
 
-POSIX::RT::SharedMem - Create/open or unlink POSIX shared memory objects in Perl
+POSIX::RT::SharedMem
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
