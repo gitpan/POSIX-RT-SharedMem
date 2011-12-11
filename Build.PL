@@ -12,7 +12,7 @@ my $builder = Module::Build->new(
     'File::Temp' => '0',
     'Module::Build' => '0.3601',
     'Test::Exception' => '0',
-    'Test::More' => '0'
+    'Test::More' => '0.88'
   },
   'configure_requires' => {
     'Devel::CheckLib' => '0',
