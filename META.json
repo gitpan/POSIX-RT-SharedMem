@@ -3,8 +3,8 @@
    "author" : [
       "Leon Timmermans <leont@cpan.org>"
    ],
-   "dynamic_config" : "1",
-   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
+   "dynamic_config" : 1,
+   "generated_by" : "Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "perl_5"
    ],
@@ -21,30 +21,44 @@
       },
       "configure" : {
          "requires" : {
-            "Devel::CheckLib" : 0,
+            "Devel::CheckLib" : "0",
             "Module::Build" : "0.3601"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Pod::Coverage::TrustPod" : "0",
+            "Test::Pod" : "1.41",
+            "Test::Pod::Coverage" : "1.08"
          }
       },
       "runtime" : {
          "requires" : {
-            "Carp" : 0,
-            "Const::Fast" : 0,
+            "Carp" : "0",
             "Exporter" : "5.57",
-            "Fcntl" : 0,
-            "File::Map" : 0,
-            "XSLoader" : 0,
+            "Fcntl" : "0",
+            "File::Map" : "0",
+            "XSLoader" : "0",
             "perl" : "5.006",
-            "strict" : 0,
-            "warnings" : 0
+            "strict" : "0",
+            "warnings" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "File::Find" : 0,
-            "File::Temp" : 0,
-            "Test::Exception" : 0,
-            "Test::More" : "0.88"
+            "File::Spec" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
+            "Test::Exception" : "0",
+            "Test::More" : "0.88",
+            "perl" : "5.006"
          }
+      }
+   },
+   "provides" : {
+      "POSIX::RT::SharedMem" : {
+         "file" : "lib/POSIX/RT/SharedMem.pm",
+         "version" : "0.09"
       }
    },
    "release_status" : "stable",
@@ -56,9 +70,9 @@
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/Leont/posix-rt-sharedmem.git",
-         "web" : "http://github.com/Leont/posix-rt-sharedmem"
+         "web" : "https://github.com/Leont/posix-rt-sharedmem"
       }
    },
-   "version" : "0.08"
+   "version" : "0.09"
 }
 

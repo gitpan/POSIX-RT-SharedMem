@@ -8,11 +8,13 @@ my @extra_linker_flags = map { "-l$_" } grep { check_lib(lib => $_) } qw/rt/;
 my $builder = Module::Build->new(
   module_name         => 'POSIX::RT::SharedMem',
     'build_requires' => {
-    'File::Find' => '0',
-    'File::Temp' => '0',
+    'File::Spec' => '0',
+    'IO::Handle' => '0',
+    'IPC::Open3' => '0',
     'Module::Build' => '0.3601',
     'Test::Exception' => '0',
-    'Test::More' => '0.88'
+    'Test::More' => '0.88',
+    'perl' => '5.006'
   },
   'configure_requires' => {
     'Devel::CheckLib' => '0',
@@ -20,7 +22,6 @@ my $builder = Module::Build->new(
   },
   'requires' => {
     'Carp' => '0',
-    'Const::Fast' => '0',
     'Exporter' => '5.57',
     'Fcntl' => '0',
     'File::Map' => '0',
