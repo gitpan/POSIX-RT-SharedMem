@@ -1,7 +1,7 @@
 
 
 This archive contains the distribution POSIX-RT-SharedMem,
-version 0.09:
+version 0.10:
 
   Create/open or unlink POSIX shared memory objects in Perl
 

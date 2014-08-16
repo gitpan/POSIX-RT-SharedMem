@@ -12,7 +12,8 @@ my $builder = Module::Build->new(
     'IO::Handle' => '0',
     'IPC::Open3' => '0',
     'Module::Build' => '0.3601',
-    'Test::Exception' => '0',
+    'POSIX' => '0',
+    'Test::Fatal' => '0',
     'Test::More' => '0.88',
     'perl' => '5.006'
   },
